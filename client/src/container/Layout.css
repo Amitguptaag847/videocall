@@ -1,0 +1,26 @@
+video {
+    width: 100%;
+    height: auto;
+    transform: scaleX(-1);
+}
+
+.card-ctm {
+    margin: auto;
+    position: absolute;
+    top: 50px; left: 50px;
+    bottom: 50px; right: 50px;
+    z-index:5;
+    width:300px;
+}
+
+.notice {
+    margin: auto;
+    position: absolute;
+    top: 50px;
+    z-index:5;
+    width: 80%;
+}
+
+.pointer {
+    cursor: pointer;
+}

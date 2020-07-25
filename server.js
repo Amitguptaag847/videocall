@@ -2,10 +2,42 @@ const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
 const path = require('path');
+const haiku = require('./utility/haiku');
 
 const app = express();
 const server = http.createServer(app);
 const io = socket(server);
+
+const users = {};
+
+io.on('connection', socket => {
+    if (!users[socket.id]) {
+        const name = haiku();
+        users[socket.id] = {
+            socketId: socket.id,
+            name: name
+        };
+    }
+    socket.emit("yourId", users[socket.id]);
+    io.sockets.emit("allUsers", users);
+    socket.on('disconnect', () => {
+        socket.removeAllListeners();
+        delete users[socket.id];
+        io.sockets.emit("allUsers", users);
+    });
+
+    socket.on("callUser", (data) => {
+        io.to(data.userToCall).emit('incomingCall', { signal: data.signalData, from: data.from });
+    });
+
+    socket.on("acceptedCall", (data) => {
+        io.to(data.to).emit('callAccepted', data.signal);
+    });
+
+    socket.on("disconnectCall", (data) => {
+        io.to(data.to).emit("callDisconnect", data);  
+    });
+});
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
