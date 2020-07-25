@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
 const path = require('path');
-const haiku = require('./utility/haiku');
+const haiku = require(path.join(__dirname,"utility", "haiku.js"));
 
 const app = express();
 const server = http.createServer(app);
