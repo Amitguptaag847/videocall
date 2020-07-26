@@ -112,9 +112,9 @@ class App extends Component {
         caller: "",
         callerSignal: null,
         incomingStream: null,
+        mainStream: this.state.stream,
         notice: data.message
       });
-      this.switchMainVideo(1);
       this.hideNotice();
     });
   }
@@ -146,7 +146,8 @@ class App extends Component {
     p.on("stream", stream => {
       this.setState({
         ...this.state,
-        incomingStream: stream
+        incomingStream: stream,
+        mainStream: stream
       });
     });
 
@@ -202,7 +203,8 @@ class App extends Component {
       showDisconnect: false,
       showIncoming: false,
       callerSignal: null,
-      incomingStream: null
+      incomingStream: null,
+      mainStream: this.state.stream
     });
   }
 
@@ -216,7 +218,6 @@ class App extends Component {
       const index = this.peersRef.indexOf(item);
       this.peersRef.splice(index, 1);
     }
-    this.switchMainVideo(1);
     this.rejectCall("Call Disconnected");
   }
 
