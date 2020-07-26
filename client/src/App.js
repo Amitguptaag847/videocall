@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.socket = io.connect("http://localhost:5000/", {  //"https://videocall-1.herokuapp.com/"
+    this.socket = io.connect("https://videocall-1.herokuapp.com/", {
       transports: ['websocket'],
       upgrade: false
     });
