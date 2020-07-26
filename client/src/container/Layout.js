@@ -42,7 +42,7 @@ function Layout(props) {
                 </Card>
             </div>
             <Row className="justify-content-md-center">
-                <Col xs={3}>
+                <Col lg={3}>
                     <Button variant="light" size="sm" block disabled><b>Your Name</b></Button>
                     <Button variant="info" size="sm" className="mb-3" block disabled><b>{props.name}</b></Button>
                     <Button variant="light" size="sm" className="mb-4" block disabled><b>Active Users </b></Button>
@@ -55,7 +55,7 @@ function Layout(props) {
                         );
                     })}
                 </Col>
-                <Col sm={6}>
+                <Col lg={6}>
                     <Row>
                         <Col>
                             <Row>
@@ -71,7 +71,7 @@ function Layout(props) {
                         </Col>
                     </Row>
                 </Col>
-                <Col sm={2}>
+                <Col lg={2}>
                     <Row>
                         <Col>
                             <Button variant="warning" size="sm" className="mb-4" block disabled><b>You</b></Button>
