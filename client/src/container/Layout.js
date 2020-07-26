@@ -43,6 +43,8 @@ function Layout(props) {
             </div>
             <Row className="justify-content-md-center">
                 <Col xs={3}>
+                    <Button variant="light" size="sm" block disabled><b>Your Name</b></Button>
+                    <Button variant="info" size="sm" className="mb-3" block disabled><b>{props.name}</b></Button>
                     <Button variant="light" size="sm" className="mb-4" block disabled><b>Active Users </b></Button>
                     {Object.keys(props.users).map(key => {
                         if (key === props.yourId) {
